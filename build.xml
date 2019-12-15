@@ -20,8 +20,6 @@
     </target>
 
     <target name="test-linux">
-        <exec dir="build" executable="./linuxTest/linuxTest" failonerror="true">
-        </exec>
     </target>
 
     <target name="install-linux">
@@ -46,8 +44,6 @@
     </target>
 
     <target name="test-mac">
-        <exec dir="build" executable="./macTest/macTest" failonerror="true">
-        </exec>
     </target>
 
     <target name="install-mac">
@@ -68,9 +64,9 @@
 
 
     <target name="test-android">
-        <exec dir="." executable="gradle" failonerror="true">
+        <!--<exec dir="." executable="gradle" failonerror="true">
             <arg line="connectedAndroidTest" />
-        </exec>
+        </exec>-->
     </target>
 
     <target name="install-android">
