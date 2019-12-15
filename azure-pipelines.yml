@@ -6,16 +6,24 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
 
-steps:
-- script: |
-    mkdir build
-    cd build
-    cmake ../
-  displayName: 'configure'
-- script: |
-    cd build
-    make
-  displayName: 'make'
+jobs:
+
+  - job: build_for_linux
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: Ant@1
+        inputs:
+          workingDirectory: ''
+          buildFile: 'build.xml'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.8'
+          jdkArchitectureOption: 'x64'
+          publishJUnitResults: true
+          testResultsFiles: '**/TEST-*.xml'
+          targets: 'configure-linux compile-linux test-linux install-linux'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: 'artifactsOut'
+          artifactName: 'BeaEngine'
