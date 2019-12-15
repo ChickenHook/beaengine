@@ -27,8 +27,7 @@ jobs:
         inputs:
           pathtoPublish: 'artifactsOut'
           artifactName: 'BeaEngine'
-
-- job: build_for_mac
+  - job: build_for_mac
     pool:
       vmImage: 'macos-latest'
     steps:
